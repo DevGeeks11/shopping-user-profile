@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.OnlineShopping.shoppinguserprofile.code.dto.AddressDTO;
 import com.OnlineShopping.shoppinguserprofile.code.entity.Address;
 import com.OnlineShopping.shoppinguserprofile.code.mapper.AddressMapper;
+import com.OnlineShopping.shoppinguserprofile.code.repository.AddressRepository;
 
 @Service
 public class AddressService {
@@ -16,8 +17,15 @@ public class AddressService {
 	@Autowired
 	private AddressMapper addrMapper;
 	
+	@Autowired
+	private AddressRepository addrRepo;
+	
 	public List<AddressDTO> fetchAllAddress(){
 		return mapEntityToDto(addrMapper.fetchAddressEntityList());
+	}
+	
+	public void saveAddress(){
+		addrRepo.saveAll(addrMapper.fetchAddressEntityList());
 	}
 	
 	private List<AddressDTO> mapEntityToDto(List<Address> addressEntityList){

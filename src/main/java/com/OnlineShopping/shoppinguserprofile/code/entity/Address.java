@@ -1,16 +1,31 @@
 package com.OnlineShopping.shoppinguserprofile.code.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Address {
 
+	@Id
 	private String addressId;
+	@Column
 	private String name;
+	@Column
 	private Long mobileNumber;
+	@Column
 	private Integer pinCode;
+	@Column
 	private String houseAddress;
+	@Column
 	private String street;
+	@Column
 	private String landmark;
+	@Column
 	private String city;
+	@Column
 	private String state;
+	
 	public String getAddressId() {
 		return addressId;
 	}
