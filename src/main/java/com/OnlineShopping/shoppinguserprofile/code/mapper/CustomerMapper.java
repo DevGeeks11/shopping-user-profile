@@ -5,23 +5,44 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.OnlineShopping.shoppinguserprofile.code.dto.CustomerDTO;
 import com.OnlineShopping.shoppinguserprofile.code.entity.Customer;
 
 @Component
 public class CustomerMapper {
 
-	public List<Customer> fetchCustomerEntityList(){
+	public List<Customer> buildCustomerEntityList(List<CustomerDTO> customerDTOList){
 		List<Customer> customerList = new ArrayList<>();
-		Customer cust = new Customer();
-		
-		cust.setEmail("abc@gmail.com");
-		cust.setId("CU1001");
-		cust.setMobileNumber(9898989898L);
-		cust.setName("Mr. Jay Pritchett");
-		cust.setPassword("password");
-		cust.setType("Existing");
-		customerList.add(cust);
-		
+		customerDTOList.stream().forEach(custDTO ->{
+			Customer customer = new Customer();
+			customer.setId(custDTO.getCustId());
+			customer.setEmail(custDTO.getEmailId());
+			customer.setPassword(custDTO.getPassword());
+			customer.setMobileNumber(custDTO.getMobileNumber());
+			customer.setGender(custDTO.getGender());
+		});
 		return customerList;
+	}
+	
+	public Customer buildCustomerEntity(CustomerDTO custDTO){
+		Customer customer = new Customer();
+		customer.setId(custDTO.getCustId());
+		customer.setEmail(custDTO.getEmailId());
+		customer.setPassword(custDTO.getPassword());
+		customer.setMobileNumber(custDTO.getMobileNumber());
+		customer.setGender(custDTO.getGender());
+
+		return customer;
+	}
+	
+	public CustomerDTO buildCustomerDTO(Customer customer){
+		CustomerDTO custDTO = new CustomerDTO();
+		custDTO.setCustId(customer.getId());
+		custDTO.setEmailId(customer.getEmail());
+		custDTO.setPassword(customer.getPassword());
+		custDTO.setMobileNumber(customer.getMobileNumber());
+		custDTO.setGender(customer.getGender());
+
+		return custDTO;
 	}
 }

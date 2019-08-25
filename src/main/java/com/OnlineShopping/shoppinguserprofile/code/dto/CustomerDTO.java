@@ -1,29 +1,29 @@
 package com.OnlineShopping.shoppinguserprofile.code.dto;
 
-public class CustomerDTO {
-	private String id;
-	private String type;
-	private String name;
-	private Long mobileNumber;
-	private String email;
+public class CustomerDTO{
+	private String custId;
+	private String emailId;
 	private String password;
-	public String getId() {
-		return id;
+	private Long mobileNumber;
+	private String gender;
+	
+	public String getCustId() {
+		return custId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setCustId(String custId) {
+		this.custId = custId;
 	}
-	public String getType() {
-		return type;
+	public String getEmailId() {
+		return emailId;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
-	public String getName() {
-		return name;
+	public String getPassword() {
+		return password;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public Long getMobileNumber() {
 		return mobileNumber;
@@ -31,16 +31,38 @@ public class CustomerDTO {
 	public void setMobileNumber(Long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public String getEmail() {
-		return email;
+	public String getGender() {
+		return gender;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-	public String getPassword() {
-		return password;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((custId == null) ? 0 : custId.hashCode());
+		return result;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CustomerDTO other = (CustomerDTO) obj;
+		if (custId == null) {
+			if (other.custId != null)
+				return false;
+		} else if (!custId.equals(other.custId))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "CustomerDTO [custId=" + custId + ", emailId=" + emailId + ", password=" + password + ", mobileNumber="
+				+ mobileNumber + ", gender=" + gender + "]";
 	}
 }
